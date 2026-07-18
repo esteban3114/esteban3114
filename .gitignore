@@ -1,0 +1,8 @@
+# local Python env used only to generate the art
+.venv/
+__pycache__/
+*.pyc
+
+# keep your raw photo private — only the derived ascii-portrait.svg is public
+assets/source-photo.*
+assets/source-prepped.png

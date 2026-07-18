@@ -1,0 +1,11 @@
+# The daily GitHub Actions workflow needs ONLY these two:
+requests==2.32.3
+beautifulsoup4==4.12.3
+
+# Portrait pipeline — install locally only, when you change your photo:
+#   pip install pillow numpy opencv-python rembg
+# (kept out of the daily workflow so CI stays fast — rembg pulls onnxruntime)
+pillow==10.4.0
+numpy
+opencv-python
+rembg

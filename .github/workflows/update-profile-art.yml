@@ -1,0 +1,39 @@
+name: Update profile art
+
+# The portrait and info card are static (regenerate them locally only when your
+# photo or details change). Only the heatmap needs to stay fresh, so this job
+# re-scrapes your public contributions and re-renders the SVG on a daily cron,
+# then commits the result.
+"on":
+  schedule:
+    - cron: "17 6 * * *"   # ~06:17 UTC daily
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-art
+  cancel-in-progress: false
+
+jobs:
+  heatmap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      # The daily job only needs the HTTP client + HTML parser — not the
+      # heavy portrait libs — so install just these two for a fast run.
+      - run: pip install requests==2.32.3 beautifulsoup4==4.12.3
+      - run: python scripts/fetch_contributions.py
+        env:
+          GH_USERNAME: ${{ github.repository_owner }}
+      - run: python scripts/render_heatmap_svg.py
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: refresh contribution graph [skip ci]"
+          file_pattern: "data/contributions.json contrib-heatmap.svg"
