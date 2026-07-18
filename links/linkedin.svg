@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="181" height="30"
+     viewBox="0 0 181 30" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" role="img" aria-label="Esteban de la Sala">
+  <style>
+    .b { opacity: 0; animation: pop .5s ease-out forwards; animation-delay: 0.36s; }
+    @keyframes pop { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .b { opacity: 1; animation: none; } }
+  </style>
+  <g class="b">
+    <rect x="0.5" y="0.5" width="180" height="29" rx="8" fill="#161b22" stroke="#30363d"/>
+    <rect x="13" y="8.0" width="14" height="14" rx="3" fill="#58a6ff"/><text x="20.0" y="18.3" font-size="9" font-weight="700" fill="#0d1117" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">in</text>
+    <text x="36" y="19.2" textLength="132.3" lengthAdjust="spacing"
+          font-size="12.5" fill="#c9d1d9">Esteban de la Sala</text>
+  </g>
+</svg>

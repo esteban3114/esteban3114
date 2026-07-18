@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="115" height="30"
+     viewBox="0 0 115 30" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" role="img" aria-label="@este.dls">
+  <style>
+    .b { opacity: 0; animation: pop .5s ease-out forwards; animation-delay: 0.24s; }
+    @keyframes pop { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .b { opacity: 1; animation: none; } }
+  </style>
+  <g class="b">
+    <rect x="0.5" y="0.5" width="114" height="29" rx="8" fill="#161b22" stroke="#30363d"/>
+    <rect x="13" y="8.0" width="14" height="14" rx="4.5" fill="none" stroke="#e1306c" stroke-width="1.4"/><circle cx="20.0" cy="15.0" r="3.4" fill="none" stroke="#e1306c" stroke-width="1.4"/><circle cx="23.6" cy="11.4" r="1.1" fill="#e1306c"/>
+    <text x="36" y="19.2" textLength="66.1" lengthAdjust="spacing"
+          font-size="12.5" fill="#c9d1d9">@este.dls</text>
+  </g>
+</svg>

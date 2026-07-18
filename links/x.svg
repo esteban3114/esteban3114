@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="115" height="30"
+     viewBox="0 0 115 30" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" role="img" aria-label="@este_krs">
+  <style>
+    .b { opacity: 0; animation: pop .5s ease-out forwards; animation-delay: 0.12s; }
+    @keyframes pop { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .b { opacity: 1; animation: none; } }
+  </style>
+  <g class="b">
+    <rect x="0.5" y="0.5" width="114" height="29" rx="8" fill="#161b22" stroke="#30363d"/>
+    <path d="M14.5 8.5 L25.5 21.5 M25.5 8.5 L14.5 21.5" stroke="#e6edf3" stroke-width="2" stroke-linecap="round"/>
+    <text x="36" y="19.2" textLength="66.1" lengthAdjust="spacing"
+          font-size="12.5" fill="#c9d1d9">@este_krs</text>
+  </g>
+</svg>

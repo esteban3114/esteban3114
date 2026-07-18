@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="86" height="30"
+     viewBox="0 0 86 30" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" role="img" aria-label="email">
+  <style>
+    .b { opacity: 0; animation: pop .5s ease-out forwards; animation-delay: 0.48s; }
+    @keyframes pop { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .b { opacity: 1; animation: none; } }
+  </style>
+  <g class="b">
+    <rect x="0.5" y="0.5" width="85" height="29" rx="8" fill="#161b22" stroke="#30363d"/>
+    <rect x="13" y="9.5" width="14" height="11" rx="2" fill="none" stroke="#f0883e" stroke-width="1.4"/><path d="M13.6 10.4 L20.0 16.2 L26.4 10.4" fill="none" stroke="#f0883e" stroke-width="1.4"/>
+    <text x="36" y="19.2" textLength="36.8" lengthAdjust="spacing"
+          font-size="12.5" fill="#c9d1d9">email</text>
+  </g>
+</svg>

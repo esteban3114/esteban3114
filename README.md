@@ -22,5 +22,15 @@
   </tr>
 </table>
 
+<br><br>
+
+<h3><code>esteban@github ~ $ ./links.sh</code></h3>
+
+<a href="https://este-dls.com"><img src="./links/website.svg" height="30" alt="este-dls.com" /></a>
+<a href="https://x.com/este_krs"><img src="./links/x.svg" height="30" alt="@este_krs" /></a>
+<a href="https://instagram.com/este.dls"><img src="./links/instagram.svg" height="30" alt="@este.dls" /></a>
+<a href="https://fr.linkedin.com/in/esteban-de-la-sala-5732123b1"><img src="./links/linkedin.svg" height="30" alt="Esteban de la Sala" /></a>
+<a href="mailto:este3112008@gmail.com"><img src="./links/email.svg" height="30" alt="email" /></a>
+
 </div>
 

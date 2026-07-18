@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="137" height="30"
+     viewBox="0 0 137 30" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" role="img" aria-label="este-dls.com">
+  <style>
+    .b { opacity: 0; animation: pop .5s ease-out forwards; animation-delay: 0.00s; }
+    @keyframes pop { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .b { opacity: 1; animation: none; } }
+  </style>
+  <g class="b">
+    <rect x="0.5" y="0.5" width="136" height="29" rx="8" fill="#161b22" stroke="#30363d"/>
+    <circle cx="20.0" cy="15.0" r="7" fill="none" stroke="#39d353" stroke-width="1.4"/><ellipse cx="20.0" cy="15.0" rx="3" ry="7" fill="none" stroke="#39d353" stroke-width="1.2"/><line x1="13" y1="15.0" x2="27" y2="15.0" stroke="#39d353" stroke-width="1.2"/>
+    <text x="36" y="19.2" textLength="88.2" lengthAdjust="spacing"
+          font-size="12.5" fill="#c9d1d9">este-dls.com</text>
+  </g>
+</svg>
