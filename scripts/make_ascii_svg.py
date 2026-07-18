@@ -34,7 +34,8 @@ CHAR_ASPECT = 0.5       # a monospace cell is ~half as wide as it is tall
 FS = 9                  # font size (px)
 CHAR_W = 5.0            # advance width per glyph (px) — forced via textLength
 LINE_H = 9.0            # line box height (px)
-PAD = 16               # dark card padding
+PAD = 16               # dark card padding (top/sides)
+PAD_BOTTOM = 30        # extra breathing room under the last row
 FILL = "#adbac7"        # single light-gray glyph color
 ROW_STAGGER = 0.07      # seconds between successive rows starting to type
 TYPE_DUR = 0.65         # seconds for one row to fully wipe in
@@ -68,7 +69,7 @@ def build(rows: list[str]) -> str:
     grid_w = COLS * CHAR_W
     grid_h = n * LINE_H
     width = round(grid_w + 2 * PAD)
-    height = round(grid_h + 2 * PAD)
+    height = round(grid_h + PAD + PAD_BOTTOM)
 
     defs: list[str] = []
     body: list[str] = []
@@ -114,10 +115,18 @@ def build(rows: list[str]) -> str:
     .card {{ fill: #0d1117; stroke: #21262d; stroke-width: 1; }}
   </style>
   <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0.72" stop-color="#fff"/>
+      <stop offset="1" stop-color="#000"/>
+    </linearGradient>
+    <mask id="vign"><rect x="0" y="0" width="{width}" height="{height}" fill="url(#fade)"/></mask>
     {"".join(defs)}
   </defs>
   <rect class="card" x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="10"/>
+  <g mask="url(#vign)">
   {"".join(body)}
+  </g>
 </svg>
 '''
 

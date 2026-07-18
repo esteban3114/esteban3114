@@ -22,9 +22,5 @@
   </tr>
 </table>
 
-<sub>terminal profile · self-generated animated SVGs · no third-party services, no token, no JS</sub>
-
 </div>
-
-<!-- touch README.md to prompt GitHub to (re)resolve the profile README -->
 

@@ -44,19 +44,23 @@ def remove_bg(img: Image.Image) -> Image.Image:
     return remove(img)
 
 
-def crop_to_subject(rgba: Image.Image, margin: float = 0.05) -> Image.Image:
+def crop_to_subject(rgba: Image.Image, margin: float = 0.05,
+                    bottom_trim: float = 0.16) -> Image.Image:
     """Crop to the subject's alpha bounding box (+ margin) so a wide photo
-    fills the character grid instead of shrinking the face to a few rows."""
+    fills the character grid instead of shrinking the face to a few rows.
+    `bottom_trim` drops the lower part of the subject (e.g. mid-torso) so the
+    portrait ends on a clean bust instead of a chopped-off block."""
     if rgba.mode != "RGBA":
         return rgba
     bbox = rgba.split()[3].getbbox()
     if not bbox:
         return rgba
     x0, y0, x1, y1 = bbox
+    y1 = y1 - int((y1 - y0) * bottom_trim)   # trim lower torso
     mx = int((x1 - x0) * margin)
     my = int((y1 - y0) * margin)
     box = (max(0, x0 - mx), max(0, y0 - my),
-           min(rgba.width, x1 + mx), min(rgba.height, y1 + my))
+           min(rgba.width, x1 + mx), min(rgba.height, y1))  # no bottom margin
     print(f"· cropping to subject {box}")
     return rgba.crop(box)
 
