@@ -64,7 +64,6 @@ def build() -> str:
     rects: list[str] = []
     month_labels: list[str] = []
     seen_month: set[str] = set()
-    max_diag = 0
 
     for day in days:
         d = date.fromisoformat(day["date"])
@@ -72,12 +71,15 @@ def build() -> str:
         row = gh_weekday(d)
         x = PAD_L + col * PITCH
         y = PAD_T + row * PITCH
-        diag = col + row
-        max_diag = max(max_diag, diag)
+        # left-to-right sweep with a slight vertical cascade (per-cell delay),
+        # exactly like the reference profile's heatmap reveal
+        delay = col * 0.06 + row * 0.035
+        cls = "c g" if day["count"] > 0 else "c"   # 'g' cells also flash
         fill = color_for(day, best)
         rects.append(
-            f'<rect class="c d{diag}" x="{x}" y="{y}" width="{CELL}" '
-            f'height="{CELL}" rx="2.5" fill="{fill}"><title>'
+            f'<rect class="{cls}" x="{x}" y="{y}" width="{CELL}" '
+            f'height="{CELL}" rx="2.5" fill="{fill}" '
+            f'style="animation-delay:{delay:.3f}s"><title>'
             f'{day["count"]} on {day["date"]}</title></rect>'
         )
         # month label at the column where a new month first appears (top row-ish)
@@ -95,15 +97,6 @@ def build() -> str:
     for row, name in ((1, "Mon"), (3, "Wed"), (5, "Fri")):
         wy = PAD_T + row * PITCH + CELL - 2
         wlabels.append(f'<text x="0" y="{wy}" class="wlabel">{name}</text>')
-
-    # per-diagonal delays: first value = the one-time reveal stagger,
-    # second (negative) = phase offset for the looping shimmer wave, so a
-    # highlight travels across the grid diagonally forever (visible even when
-    # the grid is sparse).
-    diag_css = "\n".join(
-        f".d{n}{{animation-delay:{n * STEP:.3f}s,{-n * 0.10:.3f}s}}"
-        for n in range(max_diag + 1)
-    )
 
     # legend (bottom-right)
     legend_y = PAD_T + grid_h + 16
@@ -130,25 +123,25 @@ def build() -> str:
      aria-label="{total} contributions in the last year">
   <style>
     .bg {{ fill: #0d1117; stroke: #21262d; stroke-width: 1; }}
-    .c {{ opacity: 0; transform-box: fill-box; transform-origin: center;
-          animation: pop .5s cubic-bezier(.2,.8,.2,1) both,
-                     shimmer 3.6s ease-in-out infinite; }}
+    .c {{ transform-box: fill-box; transform-origin: center; opacity: 0;
+          animation: pop .55s ease-out both; }}
+    .g {{ animation: pop .55s ease-out both, flash .7s ease-out both; }}
     @keyframes pop {{
-      0%   {{ opacity: 0; transform: translate(-6px,-6px) scale(.4); }}
-      70%  {{ opacity: 1; }}
-      100% {{ opacity: 1; transform: none; }}
+      0%   {{ opacity: 0; transform: scale(.2); }}
+      60%  {{ opacity: 1; transform: scale(1.1); }}
+      100% {{ opacity: 1; transform: scale(1); }}
     }}
-    @keyframes shimmer {{
-      0%, 12%, 100% {{ filter: brightness(1); }}
-      5%            {{ filter: brightness(1.9); }}
+    @keyframes flash {{
+      0%   {{ filter: brightness(2.4); }}
+      45%  {{ filter: brightness(2.4); }}
+      100% {{ filter: brightness(1); }}
     }}
-{diag_css}
     .mlabel, .wlabel, .legend {{ fill: #7d8590; font-size: 10px; }}
     .foot {{ fill: #7d8590; font-size: 12px; }}
     .foot .num {{ fill: #e6edf3; font-weight: 700; }}
     .foot .dim {{ fill: #57606a; }}
     @media (prefers-reduced-motion: reduce) {{
-      .c {{ animation: none; opacity: 1; transform: none; }}
+      .c {{ opacity: 1 !important; animation: none !important; }}
     }}
   </style>
   <rect class="bg" x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="10"/>
