@@ -98,23 +98,11 @@ def build() -> str:
         wy = PAD_T + row * PITCH + CELL - 2
         wlabels.append(f'<text x="0" y="{wy}" class="wlabel">{name}</text>')
 
-    # legend (bottom-right)
-    legend_y = PAD_T + grid_h + 16
-    legend_x = width - PAD_R - (5 * (CELL + 3)) - 70
-    legend = [f'<text x="{legend_x - 6}" y="{legend_y + CELL - 2}" '
-              f'class="legend" text-anchor="end">Less</text>']
-    for i in range(5):
-        lx = legend_x + i * (CELL + 3)
-        legend.append(f'<rect x="{lx}" y="{legend_y}" width="{CELL}" '
-                      f'height="{CELL}" rx="2.5" fill="{PALETTE[i]}"/>')
-    legend.append(f'<text x="{legend_x + 5 * (CELL + 3) + 4}" '
-                  f'y="{legend_y + CELL - 2}" class="legend">More</text>')
-
-    # footer stat (bottom-left)
+    # footer — just the total, like the reference (no Less/More legend, no streak)
+    footer_y = PAD_T + grid_h + 16
     footer = (
-        f'<text x="{PAD_L}" y="{legend_y + CELL - 2}" class="foot">'
+        f'<text x="{PAD_L}" y="{footer_y + CELL - 2}" class="foot">'
         f'<tspan class="num">{total:,}</tspan> contributions in the last year'
-        f'<tspan class="dim">  ·  streak {current}d · longest {longest}d</tspan>'
         f'</text>'
     )
 
@@ -122,7 +110,6 @@ def build() -> str:
      viewBox="0 0 {width} {height}" font-family="{FONT}" role="img"
      aria-label="{total} contributions in the last year">
   <style>
-    .bg {{ fill: #0d1117; stroke: #21262d; stroke-width: 1; }}
     .c {{ transform-box: fill-box; transform-origin: center; opacity: 0;
           animation: pop .55s ease-out both; }}
     .g {{ animation: pop .55s ease-out both, flash .7s ease-out both; }}
@@ -136,19 +123,16 @@ def build() -> str:
       45%  {{ filter: brightness(2.4); }}
       100% {{ filter: brightness(1); }}
     }}
-    .mlabel, .wlabel, .legend {{ fill: #7d8590; font-size: 10px; }}
+    .mlabel, .wlabel {{ fill: #7d8590; font-size: 10px; }}
     .foot {{ fill: #7d8590; font-size: 12px; }}
     .foot .num {{ fill: #e6edf3; font-weight: 700; }}
-    .foot .dim {{ fill: #57606a; }}
     @media (prefers-reduced-motion: reduce) {{
       .c {{ opacity: 1 !important; animation: none !important; }}
     }}
   </style>
-  <rect class="bg" x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="10"/>
   {"".join(month_labels)}
   {"".join(wlabels)}
   {"".join(rects)}
-  {"".join(legend)}
   {footer}
 </svg>
 '''
