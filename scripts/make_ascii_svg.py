@@ -112,7 +112,7 @@ def build(rows: list[str]) -> str:
   <style>
     text {{ fill: {FILL}; font-size: {FS}px; white-space: pre; }}
     .cur {{ fill: {FILL}; opacity: .9; }}
-    .card {{ fill: #0d1117; stroke: #21262d; stroke-width: 1; }}
+    .card {{ fill: none; stroke: #30363d; stroke-width: 1; }}
   </style>
   <defs>
     {"".join(defs)}

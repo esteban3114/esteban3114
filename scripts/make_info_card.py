@@ -117,7 +117,7 @@ def build() -> str:
      viewBox="0 0 {width} {height}" font-family="{FONT}" role="img"
      aria-label="{esc(HEADER)} info card">
   <style>
-    .bg {{ fill: #0d1117; stroke: #21262d; stroke-width: 1; }}
+    .bg {{ fill: none; stroke: #30363d; stroke-width: 1; }}
     .bar {{ fill: #161b22; }}
     .chrome {{ fill: #6e7681; font-size: 11px; letter-spacing: .5px; }}
     .head {{ fill: #e6edf3; font-size: 16px; font-weight: 700; }}
