@@ -45,7 +45,7 @@ def remove_bg(img: Image.Image) -> Image.Image:
 
 
 def crop_to_subject(rgba: Image.Image, margin: float = 0.05,
-                    bottom_trim: float = 0.16) -> Image.Image:
+                    bottom_trim: float = 0.0) -> Image.Image:
     """Crop to the subject's alpha bounding box (+ margin) so a wide photo
     fills the character grid instead of shrinking the face to a few rows.
     `bottom_trim` drops the lower part of the subject (e.g. mid-torso) so the

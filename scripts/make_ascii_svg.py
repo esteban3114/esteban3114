@@ -115,18 +115,10 @@ def build(rows: list[str]) -> str:
     .card {{ fill: #0d1117; stroke: #21262d; stroke-width: 1; }}
   </style>
   <defs>
-    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#fff"/>
-      <stop offset="0.72" stop-color="#fff"/>
-      <stop offset="1" stop-color="#000"/>
-    </linearGradient>
-    <mask id="vign"><rect x="0" y="0" width="{width}" height="{height}" fill="url(#fade)"/></mask>
     {"".join(defs)}
   </defs>
   <rect class="card" x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="10"/>
-  <g mask="url(#vign)">
   {"".join(body)}
-  </g>
 </svg>
 '''
 

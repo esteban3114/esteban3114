@@ -96,9 +96,13 @@ def build() -> str:
         wy = PAD_T + row * PITCH + CELL - 2
         wlabels.append(f'<text x="0" y="{wy}" class="wlabel">{name}</text>')
 
-    # per-diagonal delays
+    # per-diagonal delays: first value = the one-time reveal stagger,
+    # second (negative) = phase offset for the looping shimmer wave, so a
+    # highlight travels across the grid diagonally forever (visible even when
+    # the grid is sparse).
     diag_css = "\n".join(
-        f".d{n}{{animation-delay:{n * STEP:.3f}s}}" for n in range(max_diag + 1)
+        f".d{n}{{animation-delay:{n * STEP:.3f}s,{-n * 0.10:.3f}s}}"
+        for n in range(max_diag + 1)
     )
 
     # legend (bottom-right)
@@ -127,11 +131,16 @@ def build() -> str:
   <style>
     .bg {{ fill: #0d1117; stroke: #21262d; stroke-width: 1; }}
     .c {{ opacity: 0; transform-box: fill-box; transform-origin: center;
-          animation: pop .5s cubic-bezier(.2,.8,.2,1) both; }}
+          animation: pop .5s cubic-bezier(.2,.8,.2,1) both,
+                     shimmer 3.6s ease-in-out infinite; }}
     @keyframes pop {{
       0%   {{ opacity: 0; transform: translate(-6px,-6px) scale(.4); }}
       70%  {{ opacity: 1; }}
       100% {{ opacity: 1; transform: none; }}
+    }}
+    @keyframes shimmer {{
+      0%, 12%, 100% {{ filter: brightness(1); }}
+      5%            {{ filter: brightness(1.9); }}
     }}
 {diag_css}
     .mlabel, .wlabel, .legend {{ fill: #7d8590; font-size: 10px; }}

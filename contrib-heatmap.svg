@@ -4,70 +4,75 @@
   <style>
     .bg { fill: #0d1117; stroke: #21262d; stroke-width: 1; }
     .c { opacity: 0; transform-box: fill-box; transform-origin: center;
-          animation: pop .5s cubic-bezier(.2,.8,.2,1) both; }
+          animation: pop .5s cubic-bezier(.2,.8,.2,1) both,
+                     shimmer 3.6s ease-in-out infinite; }
     @keyframes pop {
       0%   { opacity: 0; transform: translate(-6px,-6px) scale(.4); }
       70%  { opacity: 1; }
       100% { opacity: 1; transform: none; }
     }
-.d0{animation-delay:0.000s}
-.d1{animation-delay:0.035s}
-.d2{animation-delay:0.070s}
-.d3{animation-delay:0.105s}
-.d4{animation-delay:0.140s}
-.d5{animation-delay:0.175s}
-.d6{animation-delay:0.210s}
-.d7{animation-delay:0.245s}
-.d8{animation-delay:0.280s}
-.d9{animation-delay:0.315s}
-.d10{animation-delay:0.350s}
-.d11{animation-delay:0.385s}
-.d12{animation-delay:0.420s}
-.d13{animation-delay:0.455s}
-.d14{animation-delay:0.490s}
-.d15{animation-delay:0.525s}
-.d16{animation-delay:0.560s}
-.d17{animation-delay:0.595s}
-.d18{animation-delay:0.630s}
-.d19{animation-delay:0.665s}
-.d20{animation-delay:0.700s}
-.d21{animation-delay:0.735s}
-.d22{animation-delay:0.770s}
-.d23{animation-delay:0.805s}
-.d24{animation-delay:0.840s}
-.d25{animation-delay:0.875s}
-.d26{animation-delay:0.910s}
-.d27{animation-delay:0.945s}
-.d28{animation-delay:0.980s}
-.d29{animation-delay:1.015s}
-.d30{animation-delay:1.050s}
-.d31{animation-delay:1.085s}
-.d32{animation-delay:1.120s}
-.d33{animation-delay:1.155s}
-.d34{animation-delay:1.190s}
-.d35{animation-delay:1.225s}
-.d36{animation-delay:1.260s}
-.d37{animation-delay:1.295s}
-.d38{animation-delay:1.330s}
-.d39{animation-delay:1.365s}
-.d40{animation-delay:1.400s}
-.d41{animation-delay:1.435s}
-.d42{animation-delay:1.470s}
-.d43{animation-delay:1.505s}
-.d44{animation-delay:1.540s}
-.d45{animation-delay:1.575s}
-.d46{animation-delay:1.610s}
-.d47{animation-delay:1.645s}
-.d48{animation-delay:1.680s}
-.d49{animation-delay:1.715s}
-.d50{animation-delay:1.750s}
-.d51{animation-delay:1.785s}
-.d52{animation-delay:1.820s}
-.d53{animation-delay:1.855s}
-.d54{animation-delay:1.890s}
-.d55{animation-delay:1.925s}
-.d56{animation-delay:1.960s}
-.d57{animation-delay:1.995s}
+    @keyframes shimmer {
+      0%, 12%, 100% { filter: brightness(1); }
+      5%            { filter: brightness(1.9); }
+    }
+.d0{animation-delay:0.000s,0.000s}
+.d1{animation-delay:0.035s,-0.100s}
+.d2{animation-delay:0.070s,-0.200s}
+.d3{animation-delay:0.105s,-0.300s}
+.d4{animation-delay:0.140s,-0.400s}
+.d5{animation-delay:0.175s,-0.500s}
+.d6{animation-delay:0.210s,-0.600s}
+.d7{animation-delay:0.245s,-0.700s}
+.d8{animation-delay:0.280s,-0.800s}
+.d9{animation-delay:0.315s,-0.900s}
+.d10{animation-delay:0.350s,-1.000s}
+.d11{animation-delay:0.385s,-1.100s}
+.d12{animation-delay:0.420s,-1.200s}
+.d13{animation-delay:0.455s,-1.300s}
+.d14{animation-delay:0.490s,-1.400s}
+.d15{animation-delay:0.525s,-1.500s}
+.d16{animation-delay:0.560s,-1.600s}
+.d17{animation-delay:0.595s,-1.700s}
+.d18{animation-delay:0.630s,-1.800s}
+.d19{animation-delay:0.665s,-1.900s}
+.d20{animation-delay:0.700s,-2.000s}
+.d21{animation-delay:0.735s,-2.100s}
+.d22{animation-delay:0.770s,-2.200s}
+.d23{animation-delay:0.805s,-2.300s}
+.d24{animation-delay:0.840s,-2.400s}
+.d25{animation-delay:0.875s,-2.500s}
+.d26{animation-delay:0.910s,-2.600s}
+.d27{animation-delay:0.945s,-2.700s}
+.d28{animation-delay:0.980s,-2.800s}
+.d29{animation-delay:1.015s,-2.900s}
+.d30{animation-delay:1.050s,-3.000s}
+.d31{animation-delay:1.085s,-3.100s}
+.d32{animation-delay:1.120s,-3.200s}
+.d33{animation-delay:1.155s,-3.300s}
+.d34{animation-delay:1.190s,-3.400s}
+.d35{animation-delay:1.225s,-3.500s}
+.d36{animation-delay:1.260s,-3.600s}
+.d37{animation-delay:1.295s,-3.700s}
+.d38{animation-delay:1.330s,-3.800s}
+.d39{animation-delay:1.365s,-3.900s}
+.d40{animation-delay:1.400s,-4.000s}
+.d41{animation-delay:1.435s,-4.100s}
+.d42{animation-delay:1.470s,-4.200s}
+.d43{animation-delay:1.505s,-4.300s}
+.d44{animation-delay:1.540s,-4.400s}
+.d45{animation-delay:1.575s,-4.500s}
+.d46{animation-delay:1.610s,-4.600s}
+.d47{animation-delay:1.645s,-4.700s}
+.d48{animation-delay:1.680s,-4.800s}
+.d49{animation-delay:1.715s,-4.900s}
+.d50{animation-delay:1.750s,-5.000s}
+.d51{animation-delay:1.785s,-5.100s}
+.d52{animation-delay:1.820s,-5.200s}
+.d53{animation-delay:1.855s,-5.300s}
+.d54{animation-delay:1.890s,-5.400s}
+.d55{animation-delay:1.925s,-5.500s}
+.d56{animation-delay:1.960s,-5.600s}
+.d57{animation-delay:1.995s,-5.700s}
     .mlabel, .wlabel, .legend { fill: #7d8590; font-size: 10px; }
     .foot { fill: #7d8590; font-size: 12px; }
     .foot .num { fill: #e6edf3; font-weight: 700; }
