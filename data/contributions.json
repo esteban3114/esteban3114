@@ -1,8 +1,8 @@
 {
   "username": "esteban3114",
-  "generated_at": "2026-11-25T17:07:35Z",
+  "generated_at": "2026-11-26T16:49:00Z",
   "start": "2025-11-23",
-  "end": "2026-11-25",
+  "end": "2026-11-26",
   "weeks": 53,
   "days": [
     {
@@ -1842,18 +1842,23 @@
     },
     {
       "date": "2026-11-25",
+      "count": 1,
+      "level": 1
+    },
+    {
+      "date": "2026-11-26",
       "count": 0,
       "level": 0
     }
   ],
-  "total": 682,
-  "current_streak": 54,
+  "total": 683,
+  "current_streak": 55,
   "longest_streak": 76,
   "best_day": {
     "date": "2026-05-29",
     "count": 44
   },
-  "active_days": 149,
+  "active_days": 150,
   "monthly": {
     "2025-11": 0,
     "2025-12": 0,
@@ -1867,6 +1872,6 @@
     "2026-08": 33,
     "2026-09": 106,
     "2026-10": 98,
-    "2026-11": 97
+    "2026-11": 98
   }
 }
